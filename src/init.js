@@ -7,7 +7,7 @@ import {
     trackerConstructorName,
     trackerInstanceName,
     trackerVersionName,
-} from "./constants";
+} from "./constants.js";
 
 export default function init(accounts, options = {}, version = "1") {
     let callbackQueue = callbackQueueName(version);

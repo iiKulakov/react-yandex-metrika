@@ -3,13 +3,13 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import init from "./init";
-import { scriptPath } from "./constants";
+import init from "./init.js";
+import { scriptPath } from "./constants.js";
 
 class YMInitializer extends Component {
     componentDidMount() {
+        init(this.props.accounts, this.props.options, this.props.version);
         setTimeout(() => {
-            init(this.props.accounts, this.props.options, this.props.version);
             let el = document.createElement("script");
             let attrs = this.props.attrs;
             el.type = "text/javascript";

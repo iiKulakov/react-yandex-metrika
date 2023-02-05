@@ -6,7 +6,7 @@ import {
     callbackQueueName,
     trackerInstanceName,
     trackerVersionName,
-} from "./constants";
+} from "./constants.js";
 
 function ymProxy(id, methodName, ...args) {
     try {
@@ -22,6 +22,9 @@ function accountIdList() {
 
 function ymAsyncProxy(ids) {
     return function (...args) {
+        console.log("🚀 ~ file: index.js ~ line 24 ~ ymAsyncProxy ~ ids", ids);
+        if (!ids) return;
+
         ids?.forEach((id) => {
             let trackerVersion = window[trackerVersionName(id)];
             let callbackQueue = window[callbackQueueName(trackerVersion)];
@@ -47,4 +50,4 @@ export function withFilter(f) {
 }
 
 export default ym;
-export { YMInitializer } from "./component";
+export { YMInitializer } from "./component.js";
