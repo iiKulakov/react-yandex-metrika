@@ -7,21 +7,20 @@ import init from './init';
 import { scriptPath } from './constants';
 
 class YMInitializer extends Component {
+
     componentDidMount() {
-        setTimeout(() =>           
-            init(this.props.accounts, this.props.options, this.props.version);
-            let el = document.createElement('script');
-            let attrs = this.props.attrs;
-            el.type = 'text/javascript';
-            el.async = true;
-            el.src = scriptPath(this.props.version);
-            Object.keys(attrs).map(i => {
-                if (el.__proto__.hasOwnProperty(i)) {
-                    el.setAttribute(i, attrs[i]);
-                }
-            });
-            this.insertPoint.insertBefore(el, null);
-        }, 2000);
+        init(this.props.accounts, this.props.options, this.props.version);
+        let el = document.createElement('script');
+        let attrs = this.props.attrs;
+        el.type = 'text/javascript';
+        el.async = true;
+        el.src = scriptPath(this.props.version);
+        Object.keys(attrs).map(i => {
+            if (el.__proto__.hasOwnProperty(i)) {
+                el.setAttribute(i, attrs[i]);
+            }
+        });
+        this.insertPoint.insertBefore(el, null);
     }
 
     render() {
