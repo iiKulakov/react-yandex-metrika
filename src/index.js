@@ -1,12 +1,12 @@
 /* eslint-env browser */
-'use strict';
+"use strict";
 
 import {
     accountListName,
     callbackQueueName,
     trackerInstanceName,
-    trackerVersionName
-} from './constants';
+    trackerVersionName,
+} from "./constants";
 
 function ymProxy(id, methodName, ...args) {
     try {
@@ -17,12 +17,12 @@ function ymProxy(id, methodName, ...args) {
 }
 
 function accountIdList() {
-    return typeof window !== 'undefined' ? window[accountListName] : [];
+    return typeof window !== "undefined" ? window[accountListName] : [];
 }
 
 function ymAsyncProxy(ids) {
     return function (...args) {
-        ids.forEach(id => {
+        ids?.forEach((id) => {
             let trackerVersion = window[trackerVersionName(id)];
             let callbackQueue = window[callbackQueueName(trackerVersion)];
             if (callbackQueue) {
@@ -39,7 +39,7 @@ function ym(...args) {
 }
 
 export function withId(counterId) {
-    return withFilter(id => counterId === id);
+    return withFilter((id) => counterId === id);
 }
 
 export function withFilter(f) {
@@ -47,4 +47,4 @@ export function withFilter(f) {
 }
 
 export default ym;
-export { YMInitializer } from './component';
+export { YMInitializer } from "./component";
